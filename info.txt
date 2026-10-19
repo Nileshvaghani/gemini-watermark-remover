@@ -1,0 +1,584 @@
+# MASTER DEVELOPMENT PROMPT: Build a Complete Gemini Image & Video Watermark Remover Website
+
+Act as a senior full-stack developer, browser-based image/video processing engineer, UI/UX designer, technical SEO specialist, and QA engineer.
+
+I want you to analyze and build an original website inspired by this reference:
+
+REFERENCE WEBSITE: https://geminiwatermarkremover.io/
+
+The final website must support BOTH image and video workflows. Do not build only a landing page, static prototype, or non-functional demo.
+
+## PHASE 1: ANALYZE THE COMPLETE REFERENCE WEBSITE FIRST
+
+Before writing code, inspect the reference website and all publicly accessible pages and links relevant to its functionality.
+
+Reference URL:
+https://geminiwatermarkremover.io/
+
+Also investigate relevant internal pages, such as:
+- The main image watermark remover.
+- The Gemini Video Remover page linked from the main website.
+- The installation and developer tool pages.
+- The FAQ section.
+- The privacy policy.
+- The terms of service.
+- Any publicly accessible documentation or source repository linked by the site.
+
+Do not assume every linked page is accessible. Report which pages you actually inspected and which could not be accessed.
+
+### Create a website audit report
+
+Analyze the following categories:
+
+1. Overall website structure and navigation.
+2. Homepage layout, hero section, and calls to action.
+3. Image and video upload interfaces.
+4. Supported input and output formats.
+5. File size and batch-processing limitations.
+6. Watermark detection and processing workflow.
+7. Before-and-after preview functionality.
+8. Processing progress, errors, and recovery.
+9. Download and ZIP export behavior.
+10. Browser compatibility and mobile responsiveness.
+11. Privacy and local-processing claims.
+12. Technical architecture and processing libraries, where publicly verifiable.
+13. SEO titles, meta descriptions, headings, internal links, and structured data.
+14. FAQ, legal pages, and trust signals.
+15. Accessibility, performance, and security.
+16. Opportunities to create a better product.
+
+For each finding, identify:
+- What the reference website actually provides.
+- What can be verified directly.
+- What remains unknown.
+- What should be implemented in my website.
+- What can be improved.
+
+Do not invent performance statistics, customer reviews, technical capabilities, or pricing details.
+
+Create a concise reference audit report in the project documentation before starting implementation.
+
+IMPORTANT: Analyze the reference website's publicly visible functionality. Do not copy its proprietary source code, logo, branding, text, or assets. Create an original brand and design.
+
+## PHASE 2: DEFINE THE PRODUCT
+
+Build a browser-based application for processing eligible images and videos that contain supported visible Gemini or Veo watermarks.
+
+The product must have two fully integrated tools:
+
+1. Gemini Image Watermark Remover.
+2. Gemini Video Watermark Remover.
+
+Both tools must be accessible through the same website, with separate routes or tabs and a consistent user experience.
+
+Target audience:
+- United States.
+- United Kingdom.
+- Canada.
+- Australia.
+- Other English-speaking markets.
+
+Primary language: English.
+
+The website should be fast, trustworthy, mobile-friendly, accessible, and optimized for organic search.
+
+## PHASE 3: TECHNOLOGY STACK
+
+First inspect the available coding environment. If no existing stack is required, use:
+
+Frontend:
+- Next.js.
+- React.
+- TypeScript.
+- Tailwind CSS.
+- Accessible, reusable components.
+
+Processing:
+- Browser-native APIs where suitable.
+- Web Workers for CPU-intensive tasks.
+- WebAssembly where appropriate.
+- WebCodecs where supported.
+- A compatible media-processing library or FFmpeg.wasm when justified.
+- A genuine watermark-processing implementation.
+
+Use browser-local processing wherever technically practical to protect user privacy and minimize server costs.
+
+Do not assume a library can remove watermarks simply because it can edit images or decode video. Verify the actual capabilities of the chosen processing implementation.
+
+Do not fabricate APIs, processing algorithms, or successful output files.
+
+## PHASE 4: IMAGE WATERMARK REMOVER
+
+Create a complete image-processing tool.
+
+### Supported inputs
+
+Initially support:
+- PNG.
+- JPG and JPEG.
+- WebP.
+
+Configure file size limits according to actual browser performance and implementation capabilities. A reasonable initial limit is 10 MB per image, with a configurable option to increase it after testing.
+
+### Upload functionality
+
+Implement:
+- Drag-and-drop upload.
+- Click-to-upload.
+- Clipboard paste when supported.
+- Multiple image uploads.
+- Upload validation.
+- Image thumbnails.
+- File names, dimensions, and file sizes.
+- Individual file removal.
+- Clear-all control.
+- Duplicate-file handling.
+
+### Processing engine
+
+For eligible Gemini-generated images:
+- Detect supported visible watermark patterns.
+- Determine whether the detected mark matches a supported variant.
+- Apply an appropriate verified restoration method.
+- Prefer mathematically justified reverse-alpha-blending restoration when the watermark's compositing parameters are known.
+- Use an alternative method only when its actual functionality has been verified.
+- Preserve unaffected image regions.
+- Avoid cropping, blurring, or replacing image regions unnecessarily.
+- Validate the result before presenting it as successful.
+
+If the watermark cannot be confidently detected, do not silently modify the image. Show an informative error or unsupported-image message.
+
+Do not assume all Gemini outputs use the same watermark size, opacity, placement, or compositing method.
+
+### Image preview
+
+Display:
+- Original image.
+- Processed image.
+- Before-and-after comparison slider.
+- Zoom controls.
+- Original and output dimensions.
+- File sizes.
+- Processing status.
+
+### Image export
+
+Allow:
+- Downloading a processed image individually.
+- Downloading multiple processed images in a ZIP file.
+- Selecting supported output formats.
+- Preserving transparency when the format supports it.
+- Maintaining original resolution wherever possible.
+
+Never enable the download button until a genuine processed output exists.
+
+## PHASE 5: VIDEO WATERMARK REMOVER
+
+Build a separate, fully functional video-processing workflow.
+
+### Supported input formats
+
+Initially target:
+- MP4.
+- WebM.
+- MOV where supported by the chosen browser decoder.
+
+Do not advertise support for a format until its decoding and export behavior has been tested.
+
+Start with a configurable maximum file size, such as 50 MB, and a configurable maximum duration. Increase these limits only after performance and memory testing.
+
+### Video upload interface
+
+Implement:
+- Drag-and-drop video upload.
+- File picker.
+- Video metadata display.
+- File size.
+- Duration.
+- Resolution.
+- Frame rate when available.
+- Preview player.
+- File validation.
+- Clear and replace controls.
+
+### Video processing engine
+
+Implement actual frame-by-frame processing for eligible videos.
+
+The processing workflow should:
+
+1. Load and validate the video.
+2. Decode the video using a supported browser API or verified media library.
+3. Detect supported visible watermark patterns.
+4. Determine the watermark's location and size.
+5. Process the relevant region of each frame.
+6. Maintain temporal consistency between consecutive frames.
+7. Avoid visible flicker, smearing, or changes outside the affected region where feasible.
+8. Preserve the original video dimensions.
+9. Preserve audio whenever technically possible.
+10. Encode the resulting video into a verified output format.
+11. Validate the output before offering the download.
+
+The implementation must not claim that a watermark is removed from every frame unless the processing pipeline actually processes and verifies the relevant frames.
+
+### Video timeline and controls
+
+Include:
+- Video preview.
+- Play and pause.
+- Timeline and seek controls.
+- Processing progress percentage.
+- Current frame or elapsed processing time where available.
+- Estimated remaining time only when a defensible estimate can be calculated.
+- Cancel processing.
+- Retry after failure.
+- Output preview.
+
+### Audio and quality
+
+Preserve audio and synchronization where possible.
+
+Display any changes caused by decoding, frame-rate conversion, or re-encoding.
+
+Do not promise pixel-perfect video output, unchanged bitrate, or lossless re-encoding unless the selected implementation genuinely guarantees it.
+
+Explain any browser limitations.
+
+### Video download
+
+Provide:
+- A working download button.
+- Correct output MIME type and extension.
+- Output file size.
+- Output duration and resolution.
+- Clear error handling if encoding fails.
+
+Ensure temporary media resources and object URLs are released after use.
+
+## PHASE 6: SHARED WATERMARK PROCESSING ARCHITECTURE
+
+Create a reusable processing architecture for images and videos.
+
+Suggested modules:
+- ImageUploader.
+- VideoUploader.
+- FileValidator.
+- WatermarkDetector.
+- ImageProcessingEngine.
+- VideoProcessingEngine.
+- VideoDecoder.
+- VideoEncoder.
+- ProcessingWorker.
+- ProgressTracker.
+- BeforeAfterComparison.
+- MediaPreview.
+- DownloadManager.
+- ZipExportManager.
+- ErrorBoundary.
+
+Keep the processing engine separate from the UI.
+
+Provide a documented interface for replacing or upgrading the detection and restoration implementation.
+
+The application must distinguish between:
+- Watermark detected and processed successfully.
+- Watermark detected but processing failed.
+- Watermark not detected.
+- Unsupported watermark variant.
+- Unsupported media format.
+- Browser capability unavailable.
+
+Do not return the original file as if it were a cleaned result.
+
+## PHASE 7: USER INTERFACE AND DESIGN
+
+Create a premium, professional interface inspired by the usability of the reference website without copying its design exactly.
+
+Visual direction:
+- Clean white or light-gray background.
+- Deep charcoal typography.
+- Original purple or blue accent palette.
+- Rounded cards and upload areas.
+- Subtle borders and shadows.
+- Professional typography.
+- Generous whitespace.
+- Clear primary actions.
+- Responsive desktop, tablet, and mobile layouts.
+
+### Main navigation
+
+Include:
+- Home.
+- Image Remover.
+- Video Remover.
+- How It Works.
+- FAQ.
+- Blog.
+- About.
+
+Add a prominent CTA: Start Removing Watermarks.
+
+### Homepage hero
+
+Create an original headline such as:
+
+"Gemini Image & Video Watermark Remover"
+
+Supporting text:
+
+"Process eligible Gemini-generated images and videos with an easy-to-use browser-based tool."
+
+Display two clear options:
+- Remove Image Watermark.
+- Remove Video Watermark.
+
+Place the working upload interface near the top of the page.
+
+Include concise supported-format information, file-size guidance, and privacy information.
+
+### Additional homepage sections
+
+1. Working image/video tool.
+2. How the tool works.
+3. Supported formats.
+4. Image processing features.
+5. Video processing features.
+6. Before-and-after demonstrations using legitimately available test assets.
+7. Privacy and security explanation.
+8. Browser compatibility.
+9. Frequently asked questions.
+10. Related tools.
+11. Footer with legal links.
+
+Do not create fake testimonials, invented user counts, fabricated reviews, or fake processing statistics.
+
+## PHASE 8: REQUIRED PAGES AND ROUTES
+
+Create these routes:
+
+/
+Main homepage with image and video options.
+
+/image-watermark-remover
+Image processing tool.
+
+/video-watermark-remover
+Video processing tool.
+
+/how-it-works
+Technical explanation of the actual processing workflow.
+
+/faq
+Frequently asked questions.
+
+/about
+Project information.
+
+/contact
+Contact information or a functional contact form.
+
+/privacy-policy
+Accurate privacy policy.
+
+/terms
+Terms of service.
+
+/blog
+Blog listing.
+
+/blog/[slug]
+Individual educational articles.
+
+Also create:
+- robots.txt.
+- XML sitemap.
+- Custom 404 page.
+- Appropriate loading and error states.
+
+Every route must work when opened directly, refreshed, or accessed from a search engine.
+
+Do not create empty placeholder pages and describe them as complete.
+
+## PHASE 9: SEO FOR THE USA AND OTHER HIGH-INCOME COUNTRIES
+
+Use natural, helpful English and implement technical SEO correctly.
+
+Research search intent and validate keywords using reliable tools where available.
+
+Potential target keywords:
+- Gemini watermark remover.
+- Gemini image watermark remover.
+- Gemini video watermark remover.
+- Remove Gemini watermark from image.
+- Remove Gemini watermark from video.
+- Veo video watermark remover.
+- Gemini watermark remover online.
+- Gemini image processing tool.
+
+These are candidate keywords, not verified search-volume estimates.
+
+### Technical SEO
+
+Implement:
+- Unique title tags.
+- Relevant meta descriptions.
+- Canonical URLs.
+- Open Graph metadata.
+- Semantic heading hierarchy.
+- Descriptive internal links.
+- Descriptive image alt text.
+- XML sitemap.
+- Robots.txt.
+- Breadcrumbs where appropriate.
+- Appropriate structured data.
+- Core Web Vitals optimization.
+- Accessible navigation.
+- Clean URL structure.
+
+Do not place multiple H1 headings on a page without a deliberate semantic reason.
+
+Do not use keyword stuffing or generate large numbers of repetitive landing pages.
+
+### Content strategy
+
+Write original, useful content about:
+- Supported Gemini image formats.
+- Processing Gemini-generated videos.
+- Video compatibility and export limitations.
+- How visible watermark restoration works.
+- Image quality and re-encoding.
+- Privacy and local browser processing.
+- Troubleshooting unsupported files.
+- Differences between visible watermarks and invisible SynthID.
+
+Explain the limitations honestly.
+
+Do not guarantee rankings, search traffic, or advertising revenue.
+
+## PHASE 10: PRIVACY, LEGAL AND SECURITY
+
+The default goal is browser-local processing so user media does not need to be uploaded to a server.
+
+Verify this claim through code inspection and network testing.
+
+If the application downloads processing code or model files, document what is downloaded.
+
+If any media must be sent to a server, clearly disclose it and implement appropriate security and retention controls.
+
+Implement:
+- MIME-type and file-signature validation.
+- Memory and file-size limits.
+- Processing timeouts.
+- Safe file handling.
+- Resource cleanup.
+- No unnecessary media retention.
+- No image or video content in analytics logs.
+- Secure configuration.
+- HTTPS deployment.
+- Dependency review.
+
+Do not claim that files never leave the browser unless network testing confirms it.
+
+Do not claim that the application removes invisible SynthID provenance signals. Visible watermark removal and invisible provenance detection are different operations.
+
+The website should be intended for media the user owns or is authorized to modify. Include a clear statement that users remain responsible for respecting applicable attribution, disclosure, and platform rules.
+
+## PHASE 11: MONETIZATION-READY ARCHITECTURE
+
+Keep the initial processing experience simple and usable.
+
+Prepare the architecture for future:
+- Google AdSense integration.
+- Affiliate links.
+- Optional premium features.
+- Higher processing limits.
+- Batch processing upgrades.
+
+Do not add intrusive advertisements to the processing interface.
+
+Do not implement fake paywalls, fake usage counters, or deceptive subscription prompts.
+
+Do not add paid services unless the required credentials, backend integration, and functionality are genuinely available.
+
+## PHASE 12: TESTING
+
+Write and run automated tests for the following:
+
+Image:
+- Valid uploads.
+- Invalid file rejection.
+- File-size limits.
+- Successful processing.
+- Unsupported watermark detection.
+- Failed processing.
+- Before-and-after comparison.
+- Downloaded output integrity.
+- Batch processing.
+
+Video:
+- Valid video uploads.
+- Unsupported codec handling.
+- Video decoding.
+- Frame processing.
+- Audio preservation.
+- Video encoding.
+- Audio/video synchronization.
+- Progress reporting.
+- Cancel and retry.
+- Output download.
+- Large-file failure handling.
+
+Website:
+- Mobile responsiveness.
+- Navigation and direct routes.
+- Accessibility.
+- SEO metadata.
+- Privacy behavior.
+- No fake processing success.
+- No exposed API secrets.
+- Resource cleanup.
+
+Use legitimate test images and videos with known expected outcomes. Clearly distinguish test fixtures from real-world processing results.
+
+## PHASE 13: DEPLOYMENT AND DELIVERABLES
+
+Deliver:
+1. Reference website audit report.
+2. Architecture and implementation plan.
+3. Complete source code.
+4. Fully functional image remover.
+5. Fully functional video remover.
+6. Responsive homepage and supporting pages.
+7. Processing modules and workers.
+8. Unit and integration tests.
+9. README.
+10. Environment variable example file.
+11. Dependency installation instructions.
+12. Local development instructions.
+13. Production deployment instructions.
+14. Browser compatibility documentation.
+15. Known limitations and future improvements.
+
+Use the existing development environment if one is already available.
+
+Do not merely print code snippets in the chat if you have access to a coding workspace. Create and edit the actual project files, run the application, test it, and fix errors.
+
+If you cannot access the reference website or a required dependency, state the limitation and continue with verifiable information. Never fabricate findings.
+
+## FINAL ACCEPTANCE CRITERIA
+
+The project is complete only when:
+
+- The reference website audit has been documented.
+- The homepage is responsive.
+- Image upload and processing work.
+- Video upload and processing work.
+- Downloads contain genuine processed outputs.
+- Unsupported inputs are handled correctly.
+- Audio preservation has been tested where applicable.
+- Privacy claims match the actual code.
+- SEO and legal pages are present.
+- The main workflows pass tests.
+- Deployment instructions are provided.
+
+Begin by inspecting the reference website and the current development environment. Produce the audit report and architecture plan, then implement the application in phases. Prioritize real functionality and honest technical claims over visual imitation.
